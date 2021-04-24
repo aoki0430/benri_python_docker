@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jupyterlab:
+    build: .
+    container_name: 'Docker_jupiterlab' 
+    user: root
+    volumes:
+      - ./codes:/home/codes
+    ports:
+      - "8888:8888"
+    environment:
+      TZ: Asia/Tokyo
+    command:
+      jupyter lab 
+          --ip=0.0.0.0
+          --allow-root
+          --no-browser
+          --NotebookApp.notebook_dir='/home/codes'
+          --NotebookApp.token=''
